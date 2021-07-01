@@ -91,7 +91,8 @@ makeSessionCookie cookieSettings jwtSettings v = do
 
 noXsrfTokenCookie :: CookieSettings -> SetCookie
 noXsrfTokenCookie cookieSettings =
-  applyCookieSettings cookieSettings $ def{ setCookieName = "NO-XSRF-TOKEN", setCookieValue = "" }
+  applyCookieSettings cookieSettings $ def
+    { setCookieName = "NO-XSRF-TOKEN", setCookieValue = "", setCookieExpires = Just expireTime }
 
 applyCookieSettings :: CookieSettings -> SetCookie -> SetCookie
 applyCookieSettings cookieSettings setCookie = setCookie
